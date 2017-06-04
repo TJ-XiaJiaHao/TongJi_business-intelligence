@@ -101,6 +101,7 @@ vector<double> get_inner_score(const vector<int>& candidate)
         cout << u << ':';
         print(to);
 #endif // __FINDINGERROR__
+
     }
     return inner_score;
 }
@@ -119,13 +120,13 @@ vector<double> get_score(const vector<int>& candidate,const vector<double>& oute
     for(int i = 0;i < inner_score.size();i++)
         final_score[i] = inner_score[i] * INNER_WEIGHT + outer_score[i] * OUTER_WEIGHT;
 
-
 #ifdef __MORE_INFORMATION__
     cout << "=======================================================================================================" << endl;
     cout << "Calculating Score..." << endl;
     for(int i = 0;i < candidate.size();i++)
         cout << "Candidate " << candidate[i] << ':' << "inner score " << inner_score[i] << ",outer score " << outer_score[i] << ",final score " << final_score[i]<< endl;
 #endif // __MORE_INFORMATION__
+
     return final_score;
 }
 
@@ -157,8 +158,8 @@ vector<int> select(const vector<int>& candidate,const vector<double>& score,int 
     for(auto item:score_and_candidate)
         cout << item.second << ':' << item.first << endl;
     cout << "=======================================================================================================" << endl;
-
 #endif // __MORE_INFORMATION__
+
     return winner;
 }
 
@@ -193,6 +194,7 @@ int main()
     cout << "Processing input..." <<endl;
     init();
     cout << "Input processing finish." << endl;
+
 #ifdef __DEBUG__
 /*
     vector<double> inner_score;
@@ -208,8 +210,8 @@ int main()
     cout << "=======================================================================================================" << endl;
     print(work({1,2},30));
     cout << "=======================================================================================================" << endl;
-
 #endif // __DEBUG__
+
     int n,desired_num;
     while(cin >> n >> desired_num)
     {
