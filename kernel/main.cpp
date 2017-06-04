@@ -115,17 +115,18 @@ vector<double> get_outer_score(const vector<int>& candidate,const vector<int>& p
 vector<double> get_score(const vector<int>& candidate,const vector<double>& outer_score)
 {
     vector<double> inner_score = get_inner_score(candidate);
+    vector<double> final_score(inner_score.size());
+    for(int i = 0;i < inner_score.size();i++)
+        final_score[i] = inner_score[i] * INNER_WEIGHT + outer_score[i] * OUTER_WEIGHT;
+
 
 #ifdef __MORE_INFORMATION__
     cout << "=======================================================================================================" << endl;
     cout << "Calculating Score..." << endl;
     for(int i = 0;i < candidate.size();i++)
-        cout << "Candidate " << candidate[i] << ':' << "inner score " << inner_score[i] << " outer score " << outer_score[i]<< endl;
+        cout << "Candidate " << candidate[i] << ':' << "inner score " << inner_score[i] << ",outer score " << outer_score[i] << ",final score " << final_score[i]<< endl;
 #endif // __MORE_INFORMATION__
-
-    for(int i = 0;i < inner_score.size();i++)
-        inner_score[i] = inner_score[i] * INNER_WEIGHT + outer_score[i] * OUTER_WEIGHT;
-    return inner_score;
+    return final_score;
 }
 
 vector<double> get_score(const vector<int>& candidate,const vector<int>& pre_layer,int meaningless)
