@@ -150,6 +150,8 @@ vector<int> select(const vector<int>& candidate,const vector<double>& score,int 
 #ifdef __MORE_INFORMATION__
     cout << "=======================================================================================================" << endl;
     cout << "Selecting..." << endl;
+    cout << "Candidate Size: " << candidate.size() << endl;
+    cout << "Desired Number: " << k << endl;
     cout << "Winner and their score:" <<endl;
     for(auto item:score_and_candidate)
         cout << item.second << ':' << item.first << endl;
@@ -202,7 +204,9 @@ int main()
     print(get_score(candidate,outer_score));
     */
     print(work({1},5));
+    cout << "=======================================================================================================" << endl;
     print(work({1,2},30));
+    cout << "=======================================================================================================" << endl;
 
 #endif // __DEBUG__
     int n,desired_num;
@@ -215,8 +219,8 @@ int main()
             cin >> temp;
             v.push_back(temp);
         }
-        cout << "Answer:" << endl;
         print(work(v,desired_num));
+        cout << "=======================================================================================================" << endl;
     }
     return 0;
 }
