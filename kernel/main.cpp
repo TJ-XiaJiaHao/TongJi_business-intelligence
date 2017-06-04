@@ -95,7 +95,7 @@ vector<double> get_inner_score(const vector<int>& candidate)
         for(auto v:to)
             inner_score[num_to_index[v]] += per;
 
-        #ifdef __FINDINGERROR__
+#ifdef __FINDINGERROR__
         int u  = item.first;
         cout << u << ':';
         print(to);
@@ -114,11 +114,8 @@ vector<double> get_outer_score(const vector<int>& candidate,const vector<int>& p
 
 vector<double> get_score(const vector<int>& candidate,const vector<int>& pre_layer,int meaningless)
 {
-    vector<double> inner_score = get_inner_score(candidate);
     vector<double> outer_score = get_outer_score(candidate,pre_layer);
-    for(int i = 0;i < inner_score.size();i++)
-        inner_score[i] = inner_score[i] * INNER_WEIGHT + outer_score[i] * OUTER_WEIGHT;
-    return inner_score;
+    return get_score(candidate,outer_score);
 }
 
 vector<double> get_score(const vector<int>& candidate,const vector<double>& outer_score)
@@ -178,13 +175,13 @@ int main()
 #ifdef __DEBUG__
     vector<double> inner_score;
     vector<double> outer_score;
-    vector<int> candidate = get_candidate({1,2},{},outer_score);
+    vector<int> candidate = get_candidate({1},{},outer_score);
     inner_score = get_inner_score(candidate);
     print(candidate);
     print(outer_score);
     print(inner_score);
     print(get_score(candidate,outer_score));
-    print(work({1,2},5));
+    print(work({1},5));
     print(work({1,2},30));
 
 #endif // __DEBUG__
