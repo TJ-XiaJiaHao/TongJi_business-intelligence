@@ -1,0 +1,7 @@
+*.cbp
+*.layout
+*.depend
+bin/
+obj/
+Amazon0601.txt
+truncated.txt
