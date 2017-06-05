@@ -53,27 +53,33 @@ function searchEvent(){
 }
 function animateSearchSmall(){
     hasSearched = true;
+    /*描述文字变淡消失*/
     $(".description").animate({opacity:'0'},1000,function(){
        $(".description").css("display","none");
     });
+    /*背景色下半部分变淡消失*/
+    $("#bg-bottom").animate({opacity:'0'},1000);
+    /*输入框变小并上移*/
     $(".search-input").css("fontSize","16px");
     $(".num-input").css("fontSize","16px");
     $(".search-box").animate({height:'40px'},500,function(){
         $(".search-box").animate({width:'500px'},500,function(){
             $(".search-box").animate({marginTop:'10px'},500,function(){
-                animateTableIn();
+                $("#bg-top").animate({height:"60px"},500,function(){
+                    $(".num-input").blur().css("opacity","0").css("border","none");
+                    $(".search-input").blur().css("opacity","0");
+                    $(".search-box").css("width","0").css("background","rgba(255,255,255,0.0)").css("border","none").css("border-bottom","1px solid white").css("borderRadius","0");
+                    $(".search-box").animate({width:"500px"},500,function(){
+                        $(".num-input").animate({opacity:"1"},500);
+                        $(".search-input").animate({opacity:"1"},500);
+                        animateTableIn();
+                    });
+                });
             });
         });
     });
 }
 function animateTableIn(){
-       $(".num-input").blur();
-    $(".search-input").blur();
-
-    $("#main").css("background","black");
-    $(".num-input").css("border","none");
     $(".table-wrap").css("display","block");
-    $(".search-box").css("background","rgba(255,255,255,0.0)").css("border","none").css("border-bottom","1px solid white").css("borderRadius","0");
-
     $(".table").animate({marginLeft:'0',opacity:'1'},1000);
 }

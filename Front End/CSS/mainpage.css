@@ -1,10 +1,36 @@
 #main{
     height:100%;
     width:100%;
-    background-image: url(../images/bg.jpg);
+    //background-image: url(../images/bg.jpg);
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
     position: fixed;
     top:0;
     left:0;
+}
+/*背景*/
+#bg{
+    height:100%;
+    width:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -10;
+}
+#bg-top,#bg-bottom{
+    height:50%;
+    width:100%;
+    margin:0 auto;
+}
+#bg-top{
+    height:360px;
+    background: rgb(105,116,179);
+    -webkit-box-shadow: inset 0 0 200px rgb(105,116,179);
+    -moz-box-shadow: inset 0 0 200px rgb(105,116,179);
+    box-shadow: inset 0 0 200px rgb(105,116,179);
+}
+#bg-bottom{
+    background: rgb(29,37,86);
 }
 
 /*搜索框*/
@@ -29,7 +55,7 @@
     transition: border .6s;
 }
 .search-box:hover{
-    border:1px solid rgb(105,116,179);
+    border:1px solid rgba(255,255,255,0.8);//rgb(105,116,179);
 }
 .search-input,.num-input{
     float: left;
@@ -38,11 +64,6 @@
     color: white;
     text-align: center;
     background: rgba(0,0,0,0);
-    -webkit-transition: all .6s;
-    -moz-transition: all .6s;
-    -ms-transition: all .6s;
-    -o-transition: all .6s;
-    transition: all .6s;
 }
 .search-input{
     width:calc(90% - 40px);
