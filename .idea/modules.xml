@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/期末项目.iml" filepath="$PROJECT_DIR$/.idea/期末项目.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BI.iml" filepath="$PROJECT_DIR$/.idea/modules/BI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BI_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BI_main.iml" group="BI" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BI_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BI_test.iml" group="BI" />
     </modules>
   </component>
 </project>

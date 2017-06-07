@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商务智能最终项目</title>
+    <link rel="stylesheet" href="CSS/public.css" />
+    <link rel="stylesheet" href="CSS/loading.css" />
+    <link rel="stylesheet" href="CSS/mainpage.css" />
+    <link rel="stylesheet" href="CSS/toastr.min.css" />
+    <link rel="stylesheet" href="CSS/bootstrap.css" />
+
+    <script type="text/javascript" src="JS/jquery.js"></script>
+    <script type="text/javascript" src="JS/loading.js"></script>
+    <script type="text/javascript" src="JS/mainpage.js"></script>
+    <script type="text/javascript" src="JS/toastr.js"></script>
+</head>
+<body>
+<!--开机动画-->
+<div id="loading">
+    <div id="msg">
+        <div class="left">
+            <span class = "msg msg-1"></span>
+        </div>
+        <div class="right">
+            <span class = "msg msg-2" >Sir</span>
+        </div>
+    </div>
+    <div id="bars">
+        <div class="box"><div class="bar bar-1"></div></div>
+        <div class="box"><div class="bar bar-2"></div></div>
+        <div class="box"><div class="bar bar-3"></div></div>
+    </div>
+</div>
+
+<div id="main">
+    <div id="bg">
+        <div id="bg-top"></div>
+        <div id="bg-bottom"></div>
+    </div>
+    <div class="search-wrap">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="search me" />
+            <input type="text" class="num-input" value="5" />
+        </div>
+        <div class="description">支持多条件查询，以#分割。右边的输入框是希望返回的推荐个数，请输入一个正整数。</div>
+    </div>
+    <div class="table-wrap">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>城市</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Tanmay</td>
+                <td>Bangalore</td>
+            </tr>
+            <tr>
+                <td>Sachin</td>
+                <td>Mumbai</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>
