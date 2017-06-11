@@ -1,0 +1,12 @@
+public class kernelImpl {
+    static{
+        System.loadLibrary("kernelCpp");
+    }
+    public native static String main();
+
+    public static void main(String[] args) {
+        String s = main();
+        System.out.println(s);
+    }
+
+}
