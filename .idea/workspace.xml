@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="947c9a21-8d95-4e51-bb80-1d15a543f4d4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/bi/kernelImpl.class" afterPath="$PROJECT_DIR$/build/classes/main/com/bi/kernelImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kernelCpp.dll" afterPath="$PROJECT_DIR$/kernelCpp.dll" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bi/Controller/DefaultViewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/bi/Controller/DefaultViewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bi/kernelImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/bi/kernelImpl.java" />
     </list>
     <ignored path="BI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,8 +51,8 @@
       <file leaf-file-name="DefaultViewController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bi/Controller/DefaultViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+            <state relative-caret-position="354">
+              <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#589#598#0" expanded="true" />
@@ -1128,12 +1124,12 @@
       <workItem from="1496833113695" duration="166000" />
       <workItem from="1497089202005" duration="13140000" />
       <workItem from="1497150056634" duration="2386000" />
-      <workItem from="1497524491811" duration="5476000" />
+      <workItem from="1497524491811" duration="6117000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22616000" />
+    <option name="totallyTimeSpent" value="23257000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1250,8 +1246,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bi/Controller/DefaultViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+        <state relative-caret-position="354">
+          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#589#598#0" expanded="true" />
