@@ -11,7 +11,7 @@ public class kernelImpl {
     }
     public native static String main(String input);
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
 //        String s = main("3&5&10&2&82");
         String s = main("2&8&5&300");
         System.out.println("Java -> C++");

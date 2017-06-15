@@ -49,11 +49,6 @@ public class getProduct {
             System.out.println(reArray[i]);
         }
 
-
-
-
-
-
         List<String> Ids = Arrays.asList(reArray);
         ArrayList<HashMap<String, Object>> results = new ArrayList<>();
         for(String Id:Ids){
