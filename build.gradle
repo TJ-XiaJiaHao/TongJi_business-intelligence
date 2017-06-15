@@ -35,9 +35,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-aop')
     compile('org.springframework.boot:spring-boot-starter-web')
 
-    // mysql 数据库相关
-//    compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.2.0')
-//    compile('mysql:mysql-connector-java:5.1.21')
+//     mysql 数据库相关
+    compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.2.0')
+    compile('mysql:mysql-connector-java:5.1.21')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("org.springframework.boot:spring-boot-devtools")
