@@ -3,6 +3,7 @@ package com.bi.Controller;
 import com.bi.Model.Products;
 import com.bi.Model.Reviews;
 import com.bi.Service.ProductService;
+import com.bi.kernelImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +33,32 @@ public class getProduct {
      */
     @RequestMapping(value = "/products", method = RequestMethod.POST)
     @ResponseBody
-    public ArrayList<HashMap<String, Object>> getProduct(@RequestBody String Info) {
+    public ArrayList<HashMap<String, Object>> getProduct(@RequestBody String inputStr) {
 //        return productService.getProduct(1);
-        List<Integer> Ids = Arrays.asList(5,12,123,51,7,8,3,7,11,111,232);
+
+
+        String s = kernelImpl.main(inputStr);
+        System.out.println(s);
+        s = s.substring(1, s.length());
+        System.out.println("Java -> C++");
+        System.out.println(s);
+
+        String[] reArray = s.split("&");
+        System.out.println(reArray.length);
+        for(int i = 0; i < reArray.length; i++) {
+            System.out.println(reArray[i]);
+        }
+
+
+
+
+
+
+        List<String> Ids = Arrays.asList(reArray);
         ArrayList<HashMap<String, Object>> results = new ArrayList<>();
-        for(Integer Id:Ids){
-            Products products = productService.getProduct(Id);
-            Reviews reviews = productService.getReviews(Id);
+        for(String Id:Ids){
+            Products products = productService.getProduct(Integer.valueOf(Id));
+            Reviews reviews = productService.getReviews(Integer.valueOf(Id));
             HashMap<String, Object> result = new HashMap<>();
             result.put("Id", products.getId());
             result.put("ASIN", products.getASIN());
