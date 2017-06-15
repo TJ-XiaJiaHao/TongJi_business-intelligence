@@ -1,8 +1,32 @@
+.gradle
+/out/
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+/classes/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
-*.cbp
-*.layout
-*.depend
-bin/
-obj/
-Amazon0601.txt
-truncated.txt
+*.ipr
+*.properties
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+/dist/
+nbdist/
+.nb-gradle/
+src/main/resources/static/files/
+src/main/webapp/
+src/main/resources/static/font-awesome/
+src/main/resources/static/styles/font/
