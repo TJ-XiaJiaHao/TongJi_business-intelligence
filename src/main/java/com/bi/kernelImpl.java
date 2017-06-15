@@ -9,10 +9,14 @@ public class kernelImpl {
     static{
         System.loadLibrary("kernelCpp");
     }
+
     public native static String main(String input);
+
+    public native static void init();
 
     public void main(String[] args) {
 //        String s = main("3&5&10&2&82");
+        init();
         String s = main("2&8&5&300");
         System.out.println("Java -> C++");
         System.out.println(s);
@@ -31,5 +35,8 @@ public class kernelImpl {
 //        }
 //        System.out.println(str);
     }
+
+
+
 
 }

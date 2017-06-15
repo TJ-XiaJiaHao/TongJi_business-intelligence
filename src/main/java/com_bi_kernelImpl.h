@@ -15,6 +15,14 @@ extern "C" {
 JNIEXPORT jstring JNICALL Java_com_bi_kernelImpl_main
   (JNIEnv *, jclass, jstring);
 
+/*
+ * Class:     com_bi_kernelImpl
+ * Method:    init
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_bi_kernelImpl_init
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif
