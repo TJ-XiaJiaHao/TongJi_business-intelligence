@@ -5,6 +5,7 @@ const int MAXN = 403394 + 5;
 const int MAXM = 3387388 + 5;
 const double INNER_WEIGHT = 0.5;
 const double OUTER_WEIGHT = 0.5;
+const int THRESHULD = 1;
 
 enum SelectReturnMods
 {

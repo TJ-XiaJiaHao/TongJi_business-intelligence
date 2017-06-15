@@ -6,6 +6,7 @@
 using namespace std;
 
 vector<int> G[MAXN];
+map<pair<vector<int>,int>,int > banned;
 
 #ifdef __DEBUG__
 template <typename T>
@@ -163,10 +164,29 @@ vector<int> select(const vector<int>& candidate,const vector<double>& score,int 
     return winner;
 }
 
+void filter(const vector<int>& choices,vector<int>& candidate)
+{
+    int cursor = 0;
+    for(int i = 0;i < candidate.size();i++)
+    {
+        if(banned.count(make_pair(choices,candidate[i])) < THRESHULD)
+            candidate[cursor++] = candidate[i];
+    }
+    candidate.resize(cursor);
+}
+
+bool ban(const vector<int>& choices,int candidate)
+{
+    banned[make_pair(choices,candidate)]++;
+}
 vector<int> work(const vector<int>& choices,int desired_num)
 {
     vector<double> first_layer_outer_score;
     vector<int> first_layer = get_candidate(choices,vector<int>(),first_layer_outer_score);
+
+    //filter first layer
+    filter(choices,first_layer);
+
     if(desired_num == first_layer.size())
         return first_layer;
     else if(desired_num < first_layer.size())
@@ -175,6 +195,10 @@ vector<int> work(const vector<int>& choices,int desired_num)
     {
         vector<double> second_layer_outer_score;
         vector<int> second_layer = get_candidate(first_layer,choices,second_layer_outer_score);
+
+        //filter second layer
+        filter(choices,second_layer);
+
         if(desired_num >= first_layer.size() + second_layer.size())
         {
             first_layer.insert(first_layer.end(),second_layer.begin(),second_layer.end());
@@ -206,13 +230,15 @@ int main()
     print(inner_score);
     print(get_score(candidate,outer_score));
     */
+    ban({1},235);
     print(work({1},5));
     cout << "=======================================================================================================" << endl;
-    print(work({1,2},30));
-    cout << "=======================================================================================================" << endl;
+    //print(work({1,2},30));
+    //cout << "=======================================================================================================" << endl;
 #endif // __DEBUG__
 
-    int n,desired_num;
+    int n;
+    int desired_num;
     while(cin >> n >> desired_num)
     {
         vector<int> v;
