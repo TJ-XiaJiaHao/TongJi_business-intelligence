@@ -8,7 +8,6 @@ using namespace std;
 vector<int> G[MAXN];
 map<pair<vector<int>,int>,int > banned;
 
-#ifdef __DEBUG__
 template <typename T>
 void print(const vector<T>& v)
 {
@@ -16,7 +15,11 @@ void print(const vector<T>& v)
         cout << item << ' ';
     cout << endl;
 }
-#endif // __DEBUG__
+
+inline void printEqualSign()
+{
+    cout << "=======================================================================================================" << endl;
+}
 
 void init()
 {
@@ -96,13 +99,6 @@ vector<double> get_inner_score(const vector<int>& candidate)
         double per = 1.0 / to.size();
         for(auto v:to)
             inner_score[num_to_index[v]] += per;
-
-#ifdef __FINDINGERROR__
-        int u  = item.first;
-        cout << u << ':';
-        print(to);
-#endif // __FINDINGERROR__
-
     }
     return inner_score;
 }
@@ -122,7 +118,7 @@ vector<double> get_score(const vector<int>& candidate,const vector<double>& oute
         final_score[i] = inner_score[i] * INNER_WEIGHT + outer_score[i] * OUTER_WEIGHT;
 
 #ifdef __MORE_INFORMATION__
-    cout << "=======================================================================================================" << endl;
+    printEqualSign();
     cout << "Calculating Score..." << endl;
     for(int i = 0;i < candidate.size();i++)
         cout << "Candidate " << candidate[i] << ':' << "inner score " << inner_score[i] << ",outer score " << outer_score[i] << ",final score " << final_score[i]<< endl;
@@ -151,14 +147,14 @@ vector<int> select(const vector<int>& candidate,const vector<double>& score,int 
         winner.push_back(item.second);
 
 #ifdef __MORE_INFORMATION__
-    cout << "=======================================================================================================" << endl;
+    printEqualSign();
     cout << "Selecting..." << endl;
     cout << "Candidate Size: " << candidate.size() << endl;
     cout << "Desired Number: " << k << endl;
     cout << "Winner and their score:" <<endl;
     for(auto item:score_and_candidate)
         cout << item.second << ':' << item.first << endl;
-    cout << "=======================================================================================================" << endl;
+    printEqualSign();
 #endif // __MORE_INFORMATION__
 
     return winner;
@@ -178,6 +174,7 @@ void filter(const vector<int>& choices,vector<int>& candidate)
 bool ban(const vector<int>& choices,int candidate)
 {
     banned[make_pair(choices,candidate)]++;
+    return true;
 }
 vector<int> work(const vector<int>& choices,int desired_num)
 {
@@ -215,9 +212,9 @@ vector<int> work(const vector<int>& choices,int desired_num)
 }
 int main()
 {
-    cout << "Processing input..." <<endl;
+    cerr << "Processing input..." <<endl;
     init();
-    cout << "Input processing finish." << endl;
+    cerr << "Input processing finish." << endl;
 
 #ifdef __DEBUG__
 /*
@@ -232,7 +229,7 @@ int main()
     */
     ban({1},235);
     print(work({1},5));
-    cout << "=======================================================================================================" << endl;
+    printEqualSign();
     //print(work({1,2},30));
     //cout << "=======================================================================================================" << endl;
 #endif // __DEBUG__
@@ -249,7 +246,7 @@ int main()
             v.push_back(temp);
         }
         print(work(v,desired_num));
-        cout << "=======================================================================================================" << endl;
+        printEqualSign();
     }
     return 0;
 }
