@@ -1,10 +1,15 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="Gradle : bi-0.0.1-SNAPSHOT.war (exploded)">
-    <output-path>$PROJECT_DIR$/out/artifacts/BI/exploded/bi-0.0.1-SNAPSHOT.war</output-path>
+    <output-path>$PROJECT_DIR$/build/libs/exploded/bi-0.0.1-SNAPSHOT.war</output-path>
     <properties id="gradle-properties">
-      <options external-project-path="$PROJECT_DIR$" />
+      <options external-project-path="$PROJECT_DIR$">
+        <manifest>TWFuaWZlc3QtVmVyc2lvbjogMS4wDQoNCg==</manifest>
+      </options>
     </properties>
     <root id="root">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/build/libs/exploded/bi-0.0.1-SNAPSHOT.war/META-INF/MANIFEST.MF" />
+      </element>
       <element id="javaee-facet-resources" facet="BI_main/web/Web Gradle : bi-0.0.1-SNAPSHOT.war" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -14,6 +19,8 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-aop:1.5.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.5.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.mybatis.spring.boot:mybatis-spring-boot-starter:1.2.0" />
+          <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:5.1.21" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-devtools:1.5.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter:1.5.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.6.RELEASE" />
@@ -23,6 +30,10 @@
           <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.8.6" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-web:4.3.6.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc:4.3.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-jdbc:1.5.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:1.2.0" />
+          <element id="library" level="project" name="Gradle: org.mybatis:mybatis:3.4.2" />
+          <element id="library" level="project" name="Gradle: org.mybatis:mybatis-spring:1.3.1" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot:1.5.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.5.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.5.1.RELEASE" />
@@ -39,16 +50,17 @@
           <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.8.6" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-context:4.3.6.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.3.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-jdbc:8.5.11" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-jdbc:4.3.6.RELEASE" />
           <element id="library" level="project" name="Gradle: ch.qos.logback:logback-classic:1.1.9" />
           <element id="library" level="project" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.22" />
           <element id="library" level="project" name="Gradle: org.slf4j:jul-to-slf4j:1.7.22" />
           <element id="library" level="project" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.22" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-juli:8.5.11" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-tx:4.3.6.RELEASE" />
           <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.9" />
           <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.22" />
         </element>
-      </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/BI/exploded/bi-0.0.1-SNAPSHOT.war/META-INF/MANIFEST.MF" />
       </element>
     </root>
   </artifact>
