@@ -1,13 +1,10 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="Gradle : bi-0.0.1-SNAPSHOT.war (exploded)">
-    <output-path>$PROJECT_DIR$/build/libs/exploded/bi-0.0.1-SNAPSHOT.war</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/BI/exploded/bi-0.0.1-SNAPSHOT.war</output-path>
     <properties id="gradle-properties">
       <options external-project-path="$PROJECT_DIR$" />
     </properties>
     <root id="root">
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/build/libs/exploded/bi-0.0.1-SNAPSHOT.war/META-INF/MANIFEST.MF" />
-      </element>
       <element id="javaee-facet-resources" facet="BI_main/web/Web Gradle : bi-0.0.1-SNAPSHOT.war" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -59,6 +56,9 @@
           <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.9" />
           <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.22" />
         </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/BI/exploded/bi-0.0.1-SNAPSHOT.war/META-INF/MANIFEST.MF" />
       </element>
     </root>
   </artifact>
