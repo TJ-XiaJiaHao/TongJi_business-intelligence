@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class DefaultViewController {
     @Bean
     public WebMvcConfigurerAdapter forwardToIndex() {
+        kernelImpl.init();
 
 //        ArrayList<Integer> inputArrayList = new ArrayList<Integer>();
 //        inputArrayList.add(3);
