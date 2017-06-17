@@ -49,4 +49,11 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+    public boolean banProduct(String banStr) {
+        banStr = banStr.replace("%26","&");
+        System.out.println("--------------" + banStr);
+        boolean b = kernelImpl.ban(banStr);
+        return b;
+    }
+
 }
