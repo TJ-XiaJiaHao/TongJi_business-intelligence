@@ -21,6 +21,32 @@ public class ProductServiceImpl implements ProductService {
     public BaseResult<Object> getProduct(String inputStr) {
         inputStr = inputStr.replace("%26","&");
         System.out.println("--------------" + inputStr);
+
+        String[] transArray = inputStr.split("&");
+
+//        int[] trans = new int[transArray.length];
+//        for(int i = 0; i < 2; i++) {
+//            trans[i] = Integer.valueOf(transArray[i]);
+//        }
+//
+//        for(int i = 2; i < transArray.length; i++) {
+//            String value = transArray[i];
+//            int temp[] = productMapper.transferProductByValue(value);
+//            if(temp != null) {
+//                trans[i] = temp[0];
+//            }
+//        }
+//        System.out.println("--------------" +"trans" + trans.length);
+//
+//        inputStr = "";
+//        for(int i = 0; i < trans.length; i++) {
+//            inputStr = inputStr + trans[i];
+//            if(i != trans.length - 1)
+//                inputStr += "&";
+//        }
+//
+//        System.out.println("--------------AFTER" + inputStr);
+
         String s = kernelImpl.main(inputStr);
         System.out.println(s);
         s = s.substring(1, s.length());

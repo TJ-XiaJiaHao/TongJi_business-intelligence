@@ -12,4 +12,9 @@ import org.apache.ibatis.annotations.Select;
 public interface ProductMapper {
     @Select("SELECT * FROM amazon_meta WHERE Id=#{ID}")
     ProductDO getProductById(@Param("ID") int ID);
+
+    @Select("SELECT Id FROM amazon_meta WHERE title=#{value}")
+    int[] transferProductByValue(@Param("value") String value);
+
+    
 }
