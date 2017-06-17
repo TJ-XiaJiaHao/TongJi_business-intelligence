@@ -25,6 +25,15 @@ public class ProductController {
         return productService.getProduct(inputStr);
     }
 
+    /**
+     * ban商品
+     * @return
+     */
+    @RequestMapping(value = "/ban", method = RequestMethod.GET)
+    public boolean banProduct(@RequestParam("banStr")String banStr){
+        return productService.banProduct(banStr);
+    }
+
 //    @RequestMapping(value = "/products", method = RequestMethod.POST)
 //    @ResponseBody
 //    public ArrayList<HashMap<String, Object>> getProduct(@RequestBody String inputStr) {

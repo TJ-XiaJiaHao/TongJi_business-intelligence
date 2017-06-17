@@ -8,6 +8,8 @@ import com.bi.Domain.BaseResult;
 
 public interface ProductService {
     BaseResult<Object> getProduct(String inputStr);
+
+    boolean banProduct(String banStr);
 }
 
 
