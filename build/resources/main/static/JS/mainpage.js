@@ -29,7 +29,7 @@ function init() {
     });
     /*初始化滚动条*/
     $("html").niceScroll({styler:"fb",cursorcolor:"rgb(16, 167, 175)", cursorwidth: '6', cursorborderradius: '10px', background: '#424f63', spacebarenabled:false, cursorborder: '0',  zindex: '1000'});
-    $(".table").niceScroll({styler:"fb",cursorcolor:"rgb(16, 167, 175)", cursorwidth: '6', cursorborderradius: '10px', background: '#424f63', spacebarenabled:false, cursorborder: '0',  zindex: '1000'});
+    $("#main").niceScroll({styler:"fb",cursorcolor:"gray", cursorwidth: '6', cursorborderradius: '10px', background: 'rgb(245,245,245)', spacebarenabled:false, cursorborder: '0',  zindex: '1000'});
 
 }
 
@@ -158,7 +158,7 @@ function animateSearchIn(){
                                 fallingDown($(".search-box"),250,300,4,4,1,function(){
                                     /*标题掉落*/
                                     titleIn(0,function(){
-                                        $(".description").animate({marginLeft:'20px',opacity:'0.5'},500);
+                                        $(".description").animate({paddingLeft:'20px',opacity:'0.5'},500);
                                     });
                                 });
                             },40);
@@ -176,13 +176,16 @@ function animateSearchSmall() {
     $(".description").animate({opacity: '0'}, 1000, function () {
         $(".description").css("display", "none");
     });
-    $("#big-title").animate({marginTop:'0px',opacity:'0',transform:'scale(0.8)'},1000);
+    $("#big-title").animate({marginTop:'0px',opacity:'0',transform:'scale(0.8)'},1000,function(){
+        $("#big-title").css("display", "none");
+    });
     /*背景色下半部分变淡消失*/
     $("#bg-bottom").animate({opacity: '0'}, 1000);
     /*输入框变小并上移*/
     $(".search-input").css("fontSize", "16px");
     $(".num-input").css("fontSize", "16px");
-    $(".search-box").blur();
+    $(".num-input").blur();
+    $(".search-input").blur();
     $(".search-box").animate({height: '40px'}, 500, function () {
         $(".search-box").animate({width: '500px'}, 500, function () {
             $(".search-box").animate({marginTop: '10px'}, 500, function () {
@@ -201,6 +204,7 @@ function animateSearchSmall() {
     });
 }
 function animateTableIn() {
+    $(".sk-three-bounce").css("display","block");
     if(!hasGetData){
         toastr.info("正在进行第" + (getDataTryCnt + 1) + "次加载.....");
         getDataTryCnt += 1;
@@ -213,6 +217,7 @@ function animateTableIn() {
         }
     }
     else{
+        $(".sk-three-bounce").css("display","none");
         $(".table-wrap").css("display", "block");
         $(".table").animate({marginLeft: '0', opacity: '1'}, 1000);
     }
