@@ -27,17 +27,19 @@
 }
 #bg-top{
     top:0;
-    background: rgb(105,116,179);
-    -webkit-box-shadow: inset 0 0 200px rgb(105,116,179);
-    -moz-box-shadow: inset 0 0 200px rgb(105,116,179);
-    box-shadow: inset 0 0 200px rgb(105,116,179);
+    background: rgb(134,193,233);
+    /*background: rgb(105,116,179);*/
+    /*-webkit-box-shadow: inset 0 0 200px rgb(105,116,179);*/
+    /*-moz-box-shadow: inset 0 0 200px rgb(105,116,179);*/
+    /*box-shadow: inset 0 0 200px rgb(105,116,179);*/
     z-index: 100;
 }
 #bg-bottom{
     bottom:0;
     left:100%;
     height:calc(100% - 360px);
-    background: rgb(29,37,86);
+    /*background: rgb(29,37,86);*/
+    background:  rgb(41,127,184);
 }
 
 
@@ -72,10 +74,12 @@
     height:50px;
     margin:0 auto 0;
     opacity:0;
-    border:1px solid rgb(29,37,86);
+    /*border:1px solid rgb(29,37,86);*/
+    border:1px solid rgb(53,152,219);
     position: relative;
     cursor: text;
-    background: rgba(15,16,52,0.6);
+    background: rgb(53,152,219);
+    /*background: rgba(15,16,52,0.6);*/
     -webkit-border-radius:30px;
     -moz-border-radius:30px;
     border-radius:30px;
@@ -103,7 +107,7 @@
 .num-input{
     width:10%;
     color:greenyellow;
-    border-right:1px solid rgb(29,37,86);
+    border-right:1px solid rgba(255,255,255,0.1);//rgb(29,37,86);
 }
 .description{
     padding-left: 70px;
@@ -149,6 +153,10 @@
     background-image: url(../images/不喜欢-hover.png);
 }
 
+/*评论界面*/
+.review-dialog{
+    width:800px !important;
+}
 /*加载动画*/
 .sk-three-bounce {
     display: none;

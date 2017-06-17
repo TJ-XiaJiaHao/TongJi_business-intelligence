@@ -18,34 +18,34 @@
 </head>
 <body>
 <!--开机动画-->
-<!--<div id="loading">-->
-    <!--<div id="msg">-->
-        <!--<div class="left">-->
-            <!--<span class="msg msg-1"></span>-->
-        <!--</div>-->
-        <!--<div class="right">-->
-            <!--<span class="msg msg-2">Sir</span>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div id="bars">-->
-        <!--<div class="box">-->
-            <!--<div class="bar bar-1"></div>-->
-        <!--</div>-->
-        <!--<div class="box">-->
-            <!--<div class="bar bar-2"></div>-->
-        <!--</div>-->
-        <!--<div class="box">-->
-            <!--<div class="bar bar-3"></div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
+<div id="loading">
+    <div id="msg">
+        <div class="left">
+            <span class="msg msg-1"></span>
+        </div>
+        <div class="right">
+            <span class="msg msg-2">Sir</span>
+        </div>
+    </div>
+    <div id="bars">
+        <div class="box">
+            <div class="bar bar-1"></div>
+        </div>
+        <div class="box">
+            <div class="bar bar-2"></div>
+        </div>
+        <div class="box">
+            <div class="bar bar-3"></div>
+        </div>
+    </div>
+</div>
 <div id="main">
     <div id="bg">
         <div id="bg-top"></div>
         <div id="bg-bottom"></div>
     </div>
-    <div id="big-title"><span class="title-item">电</span><span class="title-item">影</span><span
-            class="title-item">推</span><span class="title-item">荐</span></div>
+    <div id="big-title"><span class="title-item">商</span><span class="title-item">务</span><span
+            class="title-item">智</span><span class="title-item">能</span></div>
     <div class="search-wrap">
         <div class="search-box">
             <input type="text" class="num-input" value="30"/>
@@ -79,21 +79,27 @@
 
 <!--创建用户弹出框-->
 <div class="modal fade" id="user-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog review-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Create User</h4>
+                <h4 class="modal-title" id="myModalLabel">REVIEWS</h4>
             </div>
             <div class="modal-body">
-                <input class="form-control" v-model="newAccount" placeholder="user name"/><br/>
-                <input class="form-control" type="password" v-model="newPassword" placeholder="password"/>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">&nbsp;Cancel&nbsp;</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="createUser()">
-                    &nbsp;confirm&nbsp;</button>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Rating</th>
+                        <th>Votes</th>
+                        <th>Helpful</th>
+                    </tr>
+                    </thead>
+                    <tbody class="reviews-body">
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

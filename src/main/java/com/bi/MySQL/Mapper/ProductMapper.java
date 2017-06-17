@@ -16,5 +16,5 @@ public interface ProductMapper {
     @Select("SELECT Id FROM amazon_meta WHERE title=#{value}")
     int[] transferProductByValue(@Param("value") String value);
 
-    
+
 }
