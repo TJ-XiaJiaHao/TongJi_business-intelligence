@@ -1,7 +1,5 @@
 package com.bi;
 
-import java.util.ArrayList;
-
 /**
  * Created by Administrator on 2017/6/10.
  */
