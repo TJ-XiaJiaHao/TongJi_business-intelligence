@@ -9,11 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Arrays;
-
-import java.util.ArrayList;
+import java.util.*;
 
 
 /**
@@ -35,20 +31,24 @@ public class getProduct {
     @ResponseBody
     public ArrayList<HashMap<String, Object>> getProduct(@RequestBody String inputStr) {
 //        return productService.getProduct(1);
-
+        Date a = new Date();
+        System.out.println(" [ 1 ] - " + a);
         inputStr = inputStr.replace("%26","&");
-        System.out.println("--------------" + inputStr);
+//        System.out.println("--------------" + inputStr);
         String s = kernelImpl.main(inputStr);
-        System.out.println(s);
+//        System.out.println(s);
         s = s.substring(1, s.length());
-        System.out.println("Java -> C++");
-        System.out.println(s);
+//        System.out.println("Java -> C++");
+//        System.out.println(s);
+
 
         String[] reArray = s.split("&");
-        System.out.println(reArray.length);
-        for(int i = 0; i < reArray.length; i++) {
-            System.out.println(reArray[i]);
-        }
+//        System.out.println(reArray.length);
+//        for(int i = 0; i < reArray.length; i++) {
+//            System.out.println(reArray[i]);
+//        }
+        a = new Date();
+        System.out.println(" [ 2 ] - " + a);
 
         List<String> Ids = Arrays.asList(reArray);
         ArrayList<HashMap<String, Object>> results = new ArrayList<>();
@@ -70,6 +70,8 @@ public class getProduct {
                 result.put("AllReview", reviews.getAllReviews());
             results.add(result);
         }
+        a = new Date();
+        System.out.println(" [ 3 ] - " + a);
         return results;
     }
 }
