@@ -6,7 +6,7 @@ var hasGetData = false;
 var getDataTryCnt = 0;
 var input = "";
 $(document).ready(function () {
-    init();
+    init();animateSearchIn();
 });
 
 /*初始化消息提示样式和部分事件*/
@@ -69,7 +69,7 @@ function checkNum() {
 
 /*把数据填到表格中*/
 function addItemToTable(ASIN,Categories,Group,ID,Salesrank,Title){
-    $(".table-body").append("<tr>" +
+    $(".table-body").append("<tr class='table-item' title='点击查看详情'data-toggle='modal'data-target='#user-popup'>" +
         "<td>" + ASIN + "</td>" +
         "<td>" + Categories + "</td>" +
         "<td>" + Group + "</td>" +
@@ -105,12 +105,12 @@ function searchEvent() {
                 // console.log("[ 返回结果 ]",result);
                 $(".table").animate({marginLeft: '50px', opacity: '0'}, 0);
                 $(".table-body").html("");
+                console.log(result);
                 for(var i = 0;i < result.length;i++){
                     addItemToTable(result[i].ASIN,result[i].Categories,result[i].Group,result[i].Id,result[i].Salesrank,result[i].Title);
                 }
                 getDataTryCnt = 0;
                 hasGetData = true;
-                dislikeEvent();
                 toastr.success("加载成功！");
                 console.log(new Date());
             },
@@ -134,15 +134,26 @@ function dislikeEvent(){
     dislikeList = $(".dont-like-icon");
     for(var i = 0;i < dislikeList.length;i++){
         var id = $(".table-body tr").eq(i).find(".id").html();
-        dislikeList.eq(i).bind('click',{id:id},function(event){
+        dislikeList.eq(i).bind('click',{index:i,id:id},function(event){
             var dislikeInput = input + "&" + event.data.id;
-            console.log(dislikeInput);//结果在控制台上显示为stonecold
+            $(".table-body tr").eq(event.data.index).css("display","none");
+            toastr.info("已经接受到您的反馈，谢谢！");
+            event.stopPropagation();
         });
     }
 }
-function dislike(id){
-    alert(id);
+
+/*表格元素点击事件*/
+function tableItemEvent(){
+    tableItems = $(".table-item");
+    for(var i = 0;i < tableItems.length;i++){
+        var id = $(".table-body tr").eq(i).find(".id").html();
+        tableItems.eq(i).bind('click',{index:i,id:id},function(event){
+            alert("请求reviews " + event.data.id);
+        });
+    }
 }
+
 /*过度动画*/
 function fallingDown(dom,startTop,endTop,step,distance,opacity,callback){
     opacity = opacity > 0.9 ? 1 : opacity + 0.1;
@@ -242,6 +253,8 @@ function animateTableIn() {
         }
     }
     else{
+        dislikeEvent();
+        tableItemEvent();
         $(".sk-three-bounce").css("display","none");
         $(".table-wrap").css("display", "block");
         $(".table").animate({marginLeft: '0', opacity: '1'}, 1000);
