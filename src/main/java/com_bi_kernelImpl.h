@@ -17,6 +17,14 @@ JNIEXPORT jstring JNICALL Java_com_bi_kernelImpl_main
 
 /*
  * Class:     com_bi_kernelImpl
+ * Method:    ban
+ * Signature: (Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_bi_kernelImpl_ban
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     com_bi_kernelImpl
  * Method:    init
  * Signature: ()V
  */

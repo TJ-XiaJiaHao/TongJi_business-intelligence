@@ -11,7 +11,7 @@ public class kernelImpl {
     }
 
     public native static String main(String input);
-
+    public native static boolean ban(String inputban);
     public native static void init();
 
     public void main(String[] args) {
@@ -20,6 +20,11 @@ public class kernelImpl {
         String s = main("2&8&5&300");
         System.out.println("Java -> C++");
         System.out.println(s);
+
+        boolean flag = ban("2&8&5&300&44");
+        System.out.println("Java -> C++: ban");
+        System.out.println(flag);
+
 //        ArrayList<Integer> inputArrayList = new ArrayList<Integer>();
 //        inputArrayList.add(1);
 //        inputArrayList.add(3);
@@ -35,8 +40,5 @@ public class kernelImpl {
 //        }
 //        System.out.println(str);
     }
-
-
-
 
 }
