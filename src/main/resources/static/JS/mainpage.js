@@ -4,8 +4,9 @@
 var hasSearched = false;
 var hasGetData = false;
 var getDataTryCnt = 0;
+var input = "";
 $(document).ready(function () {
-    init();
+    init();animateSearchIn();
 });
 
 /*初始化消息提示样式和部分事件*/
@@ -55,6 +56,10 @@ function checkNum() {
         toastr.error("推荐数量输入错误，数量必须是正整数！");
         return false;
     }
+    if(num > "50"){
+        toastr.warning("输入数量过大！！！！");
+        return false;
+    }
     if (num == "0") {
         toastr.info("推荐数量为0？这还有意义么？")
         return false;
@@ -64,22 +69,24 @@ function checkNum() {
 
 /*把数据填到表格中*/
 function addItemToTable(ASIN,Categories,Group,ID,Salesrank,Title){
-    $(".table-body").append("<tr>" +
+    $(".table-body").append("<tr class='table-item' title='点击查看详情'data-toggle='modal'data-target='#user-popup'>" +
         "<td>" + ASIN + "</td>" +
         "<td>" + Categories + "</td>" +
         "<td>" + Group + "</td>" +
-        "<td>" + ID + "</td>" +
+        "<td class='id'>" + ID + "</td>" +
         "<td>" + Salesrank + "</td>" +
         "<td>" + Title + "</td>" +
+        "<td class='dont-like'><div class='dont-like-icon'></div></td>" +
         "</tr>")
 }
 
 /*回车搜索事件*/
 function searchEvent() {
     if (checkKeyWord() && checkNum()) {
+        input = "";
+        console.log(new Date());
         var rtnCnt = $(".num-input").val();
         var inputArr = $(".search-input").val().split("#");
-        var input = "";
         input += inputArr.length + "&";
         input += rtnCnt;
         for(var i = 0; i < inputArr.length;i++){
@@ -98,15 +105,18 @@ function searchEvent() {
                 // console.log("[ 返回结果 ]",result);
                 $(".table").animate({marginLeft: '50px', opacity: '0'}, 0);
                 $(".table-body").html("");
+                console.log(result);
                 for(var i = 0;i < result.length;i++){
                     addItemToTable(result[i].ASIN,result[i].Categories,result[i].Group,result[i].Id,result[i].Salesrank,result[i].Title);
                 }
                 getDataTryCnt = 0;
                 hasGetData = true;
                 toastr.success("加载成功！");
+                console.log(new Date());
             },
             error: function (errorMsg) {
                 toastr.error("获取搜索结果失败！");
+                console.log(new Date());
             }
         });
         if (!hasSearched)animateSearchSmall();
@@ -115,6 +125,32 @@ function searchEvent() {
             animateTableIn();
             // toastr.info("正在加载.....");
         }
+    }
+}
+
+/*不喜欢按钮点击事件*/
+function dislikeEvent(){
+    /*不喜欢按钮事件*/
+    dislikeList = $(".dont-like-icon");
+    for(var i = 0;i < dislikeList.length;i++){
+        var id = $(".table-body tr").eq(i).find(".id").html();
+        dislikeList.eq(i).bind('click',{index:i,id:id},function(event){
+            var dislikeInput = input + "&" + event.data.id;
+            $(".table-body tr").eq(event.data.index).css("display","none");
+            toastr.info("已经接受到您的反馈，谢谢！");
+            event.stopPropagation();
+        });
+    }
+}
+
+/*表格元素点击事件*/
+function tableItemEvent(){
+    tableItems = $(".table-item");
+    for(var i = 0;i < tableItems.length;i++){
+        var id = $(".table-body tr").eq(i).find(".id").html();
+        tableItems.eq(i).bind('click',{index:i,id:id},function(event){
+            alert("请求reviews " + event.data.id);
+        });
     }
 }
 
@@ -217,6 +253,8 @@ function animateTableIn() {
         }
     }
     else{
+        dislikeEvent();
+        tableItemEvent();
         $(".sk-three-bounce").css("display","none");
         $(".table-wrap").css("display", "block");
         $(".table").animate({marginLeft: '0', opacity: '1'}, 1000);

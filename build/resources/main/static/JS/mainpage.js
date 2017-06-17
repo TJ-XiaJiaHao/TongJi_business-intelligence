@@ -4,6 +4,7 @@
 var hasSearched = false;
 var hasGetData = false;
 var getDataTryCnt = 0;
+var input = "";
 $(document).ready(function () {
     init();
 });
@@ -55,6 +56,10 @@ function checkNum() {
         toastr.error("推荐数量输入错误，数量必须是正整数！");
         return false;
     }
+    if(num > "50"){
+        toastr.warning("输入数量过大！！！！");
+        return false;
+    }
     if (num == "0") {
         toastr.info("推荐数量为0？这还有意义么？")
         return false;
@@ -68,18 +73,20 @@ function addItemToTable(ASIN,Categories,Group,ID,Salesrank,Title){
         "<td>" + ASIN + "</td>" +
         "<td>" + Categories + "</td>" +
         "<td>" + Group + "</td>" +
-        "<td>" + ID + "</td>" +
+        "<td class='id'>" + ID + "</td>" +
         "<td>" + Salesrank + "</td>" +
         "<td>" + Title + "</td>" +
+        "<td class='dont-like'><div class='dont-like-icon'></div></td>" +
         "</tr>")
 }
 
 /*回车搜索事件*/
 function searchEvent() {
     if (checkKeyWord() && checkNum()) {
+        input = "";
+        console.log(new Date());
         var rtnCnt = $(".num-input").val();
         var inputArr = $(".search-input").val().split("#");
-        var input = "";
         input += inputArr.length + "&";
         input += rtnCnt;
         for(var i = 0; i < inputArr.length;i++){
@@ -103,10 +110,13 @@ function searchEvent() {
                 }
                 getDataTryCnt = 0;
                 hasGetData = true;
+                dislikeEvent();
                 toastr.success("加载成功！");
+                console.log(new Date());
             },
             error: function (errorMsg) {
                 toastr.error("获取搜索结果失败！");
+                console.log(new Date());
             }
         });
         if (!hasSearched)animateSearchSmall();
@@ -118,6 +128,21 @@ function searchEvent() {
     }
 }
 
+/*不喜欢按钮点击事件*/
+function dislikeEvent(){
+    /*不喜欢按钮事件*/
+    dislikeList = $(".dont-like-icon");
+    for(var i = 0;i < dislikeList.length;i++){
+        var id = $(".table-body tr").eq(i).find(".id").html();
+        dislikeList.eq(i).bind('click',{id:id},function(event){
+            var dislikeInput = input + "&" + event.data.id;
+            console.log(dislikeInput);//结果在控制台上显示为stonecold
+        });
+    }
+}
+function dislike(id){
+    alert(id);
+}
 /*过度动画*/
 function fallingDown(dom,startTop,endTop,step,distance,opacity,callback){
     opacity = opacity > 0.9 ? 1 : opacity + 0.1;
