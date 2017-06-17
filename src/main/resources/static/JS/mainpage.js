@@ -6,7 +6,7 @@ var hasGetData = false;
 var getDataTryCnt = 0;
 var input = "";
 $(document).ready(function () {
-    init();animateSearchIn();
+    init();
 });
 
 /*初始化消息提示样式和部分事件*/
@@ -92,31 +92,33 @@ function searchEvent() {
         for(var i = 0; i < inputArr.length;i++){
             input += "&" + inputArr[i];
         }
-        var URL = "http://localhost:8080/products/products";
+        var URL = "http://localhost:8080/products";
+        console.log(URL);
         $.ajax({
-            type: "post",
+            type: "get",
             async: true,            //异步请求
             url: URL,    //请求发送到TestServlet处
             data: {
-                info:input
+                inputStr:input
             },
             dataType: "json",        //返回数据形式为json
             success: function (result) {
                 // console.log("[ 返回结果 ]",result);
                 $(".table").animate({marginLeft: '50px', opacity: '0'}, 0);
                 $(".table-body").html("");
-                console.log(result);
-                for(var i = 0;i < result.length;i++){
-                    addItemToTable(result[i].ASIN,result[i].Categories,result[i].Group,result[i].Id,result[i].Salesrank,result[i].Title);
+                if(result.code == 200){
+                    data = result.data;
+                    for(var i = 0;i < data.length;i++){
+                        addItemToTable(data[i].asin,data[i].categories,data[i].groups,data[i].id,data[i].salesrank,data[i].title);
+                    }
+                    getDataTryCnt = 0;
+                    hasGetData = true;
+                    toastr.success("加载成功！");
                 }
-                getDataTryCnt = 0;
-                hasGetData = true;
-                toastr.success("加载成功！");
-                console.log(new Date());
+                else toastr.error("获取结果失败！")
             },
             error: function (errorMsg) {
-                toastr.error("获取搜索结果失败！");
-                console.log(new Date());
+                toastr.error("服务器连接失败！");
             }
         });
         if (!hasSearched)animateSearchSmall();
@@ -136,20 +138,78 @@ function dislikeEvent(){
         var id = $(".table-body tr").eq(i).find(".id").html();
         dislikeList.eq(i).bind('click',{index:i,id:id},function(event){
             var dislikeInput = input + "&" + event.data.id;
+            var URL = "http://localhost:8080/ban";
+            console.log(URL);
             $(".table-body tr").eq(event.data.index).css("display","none");
-            toastr.info("已经接受到您的反馈，谢谢！");
+            $.ajax({
+                type: "get",
+                async: true,            //异步请求
+                url: URL,    //请求发送到TestServlet处
+                data: {
+                    banStr:dislikeInput
+                },
+                dataType: "json",        //返回数据形式为json
+                success: function (result) {
+                    if(result) toastr.success("已经接受到您的反馈，谢谢！");
+                    else toastr.error("拒绝接受消息，WHY？");
+                },
+                error: function (errorMsg) {
+                    toastr.error("获取搜索结果失败！");
+                }
+            });
             event.stopPropagation();
         });
     }
 }
 
 /*表格元素点击事件*/
+function addItemToReviews(date,customer,rating,votes,helpful){
+    console.log(date + " " + customer + " " + rating + " " + votes + " " + helpful);
+    $(".reviews-body").append("<tr>" +
+        "<td>" + date + "</td>" +
+        "<td>" + customer + "</td>" +
+        "<td>" + rating + "</td>" +
+        "<td>" + votes + "</td>" +
+        "<td>" + helpful + "</td>" +
+        "</tr>")
+}
 function tableItemEvent(){
     tableItems = $(".table-item");
     for(var i = 0;i < tableItems.length;i++){
         var id = $(".table-body tr").eq(i).find(".id").html();
         tableItems.eq(i).bind('click',{index:i,id:id},function(event){
-            alert("请求reviews " + event.data.id);
+            var URL = "http://localhost:8080/reviews";
+            $.ajax({
+                type: "get",
+                async: true,            //异步请求
+                url: URL,    //请求发送到TestServlet处
+                data: {
+                    productId:event.data.id
+                },
+                dataType: "json",        //返回数据形式为json
+                success: function (result) {
+                    if(result == null || result.data == null) return;
+                    if(result.code == 200){
+                        data = result.data.allReviews;
+                        if(data == null) return;
+                        reviews = data.split("\n");
+                        $(".reviews-body").html("");
+                        for(var i = 0; i< reviews.length;i++){
+                            colums = reviews[i].split("  ");
+                            if(colums.length == 8){
+                                addItemToReviews(colums[0],colums[2],colums[3].split(" ")[1],colums[5],colums[7]);
+                                console.log(colums);
+                            }
+                        }
+                    }
+                    else{
+                        toastr.error("获取结果失败！");
+                    }
+                },
+                error: function (errorMsg) {
+                    toastr.error("获取结果失败！");
+                }
+            });
         });
     }
 }
