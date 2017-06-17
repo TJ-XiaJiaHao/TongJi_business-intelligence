@@ -129,7 +129,11 @@
     margin-left:30px;
     //color:white !important;
 }
-
+.table-item:hover{
+    color:gray;
+    background: rgba(0,0,0,0.1);
+    cursor:pointer;
+}
 /*不喜欢小图标*/
 .dont-like{
     text-align: center;
